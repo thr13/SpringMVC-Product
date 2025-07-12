@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -102,11 +103,20 @@ public class BasicItemController {
          */
     }
 
-    @PostMapping("/add")
+//    @PostMapping("/add")
     public String addItemV5(Item item) {
         itemRepository.save(item);
 
         return "redirect:/basic/items/" + item.getId(); // RPG(Post/Redirect/Get) 적용
+    }
+
+    @PostMapping("/add")
+    public String addItemV6(Item item, RedirectAttributes redirectAttributes) {
+        Item saveItem = itemRepository.save(item);
+        redirectAttributes.addAttribute("itemId", saveItem.getId()); // 리다이렉트와 관련된 속성을 넣어줄 수 있다
+        redirectAttributes.addAttribute("status", true); // status 가 ture 이면 저장이 됬다고 간주
+
+        return "redirect:/basic/items/{itemId}"; // 경로에 itemId 를 출력하고 남은 status 는 쿼리 파라미터로 들어가게 된다
     }
 
     @GetMapping("/{itemId}/edit")
