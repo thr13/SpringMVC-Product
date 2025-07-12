@@ -33,6 +33,16 @@ public class BasicItemController {
         return "basic/item";
     }
 
+    @GetMapping("/add")
+    public String addForm() {
+        return "basic/addForm";
+    }
+
+    @GetMapping("/add")
+    public String save() {
+        return "basic/addForm"; // addForm 에서 Post 를 호출하면 실행
+    }
+
     /**
      * 테스트용 데이터 추가
      */
