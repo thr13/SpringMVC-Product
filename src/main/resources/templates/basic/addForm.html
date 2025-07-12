@@ -19,7 +19,7 @@
     <h4 class="mb-3">상품 입력</h4>
 
     <!-- action 의 값이 없다면 현재 URL 에 데이터를 전송한다: 같은 URL 이지만 다른 method 이므로 같이 사용가능 -->
-    <form action="item.html" th:action="/basic/items/add" method="post">
+    <form action="item.html" th:action method="post">
         <div>
             <label for="itemName">상품명</label>
             <input type="text" id="itemName" name="itemName" class="form-control" placeholder="이름을 입력하세요">
