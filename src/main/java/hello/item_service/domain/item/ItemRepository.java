@@ -10,7 +10,7 @@ import java.util.Map;
 @Repository
 public class ItemRepository {
 
-    private static final Map<Long, Item> store = new HashMap<>(); // 상품의 ID 를 저장할 객체, 동시성(병렬성) 환경 고려x
+    private static final Map<Long, Item> store = new HashMap<>();
     private static long sequence = 0L;
 
     // 상품 저장
