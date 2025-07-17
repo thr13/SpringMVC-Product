@@ -1,9 +1,7 @@
-package hello.item_service.web.message;
+package hello.itemservice.web.message;
 
-import hello.item_service.domain.item.DeliveryCode;
-import hello.item_service.domain.item.Item;
-import hello.item_service.domain.item.ItemRepository;
-import hello.item_service.domain.item.ItemType;
+import hello.itemservice.domain.item.Item;
+import hello.itemservice.domain.item.ItemRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -11,10 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 @Slf4j
 @Controller
