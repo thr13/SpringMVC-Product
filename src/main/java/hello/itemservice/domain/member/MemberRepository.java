@@ -9,7 +9,7 @@ import java.util.*;
 @Repository
 public class MemberRepository {
     /*
-    실무에서는 동시성 문제를 해결하기 위해 CurrentHashMap, AtomicLong 등 사용 고려
+    실무에서는 동시성 문제를 해결하기 위해 ConcurrentHashMap, AtomicLong 등 사용 고려
      */
     private static Map<Long, Member> store = new HashMap<>();
     private static long sequence = 0L;
