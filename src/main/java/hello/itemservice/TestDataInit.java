@@ -1,33 +1,26 @@
 package hello.itemservice;
 
-import hello.itemservice.domain.item.Item;
-import hello.itemservice.domain.item.ItemRepository;
-import hello.itemservice.domain.member.Member;
-import hello.itemservice.domain.member.MemberRepository;
-import jakarta.annotation.PostConstruct;
+import hello.itemservice.domain.Item;
+import hello.itemservice.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
 
-@Component
+@Slf4j
 @RequiredArgsConstructor
 public class TestDataInit {
 
     private final ItemRepository itemRepository;
-    private final MemberRepository memberRepository;
 
     /**
-     * 테스트용 데이터 추가
+     * 확인용 초기 데이터 추가
      */
-    @PostConstruct
-    public void init() {
+    @EventListener(ApplicationReadyEvent.class)
+    public void initData() {
+        log.info("test data init");
         itemRepository.save(new Item("itemA", 10000, 10));
         itemRepository.save(new Item("itemB", 20000, 20));
-
-        Member member = new Member();
-        member.setLoginId("test");
-        member.setPassword("test!");
-        member.setName("테스터");
-        memberRepository.save(member);
     }
 
 }
