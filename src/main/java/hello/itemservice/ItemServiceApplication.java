@@ -1,23 +1,24 @@
 package hello.itemservice;
 
+import hello.itemservice.config.MemoryConfig;
+import hello.itemservice.repository.ItemRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.Profile;
 
-@SpringBootApplication
+@Import(MemoryConfig.class)
+@SpringBootApplication(scanBasePackages = "hello.itemservice.web")
 public class ItemServiceApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ItemServiceApplication.class, args);
 	}
 
-/*
-// 스프링 부트 사용시 메시지 소스를 자동으로 스프링 빈으로 등록해준다
 	@Bean
-	public MessageSource messageSource() {
-		ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
-		messageSource.setBasenames("messages", "errors");
-		messageSource.setDefaultEncoding("utf-8");
-		return messageSource;
+	@Profile("local")
+	public TestDataInit testDataInit(ItemRepository itemRepository) {
+		return new TestDataInit(itemRepository);
 	}
-*/
 }
