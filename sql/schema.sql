@@ -8,7 +8,14 @@ create table item
     primary key (id)
 );
 
+
 -- 등록 쿼리
 insert into item(item_name, pricem, quantity) values ('ItemTest', 10000, 10);
 -- 조회 쿼리
 select * from item;
+
+-- 동적 쿼리
+select id, item_name, price, quantity from item;
+select id, item_name, price, quantity from item where item_name like concat('%',?,'%')
+select id, item_name, price, quantity from item where price <= ?
+select id, item_name, price, quantity from item where item_name like concat('%',?,'%') and price <= ?
