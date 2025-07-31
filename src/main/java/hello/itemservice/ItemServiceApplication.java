@@ -34,6 +34,8 @@ public class ItemServiceApplication {
 		return new TestDataInit(itemRepository);
 	}
 
+	/*
+	//스프링 부트는 임베디드 데이터베이스(메모리 DB)를 기본으로 제공한다
 	@Bean
 	@Profile("test")
 	public DataSource dataSource() {
@@ -45,5 +47,5 @@ public class ItemServiceApplication {
 		dataSource.setPassword("");
 		return dataSource;
 	}
-
+	*/
 }
