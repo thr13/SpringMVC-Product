@@ -8,11 +8,14 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+//@Commit //테스트 종료시 롤백 대신 강제로 커밋을 수행함 @Commit 대신 @Rollback(value = false) 를 사용해도 된다
+@Transactional
 @SpringBootTest
 class ItemRepositoryTest {
 
@@ -21,7 +24,6 @@ class ItemRepositoryTest {
 
     @AfterEach
     void afterEach() {
-        //MemoryItemRepository 의 경우 제한적으로 사용
         if (itemRepository instanceof MemoryItemRepository) {
             ((MemoryItemRepository) itemRepository).clearStore();
         }
