@@ -10,7 +10,7 @@ create table item
 
 
 -- 등록 쿼리
-insert into item(item_name, pricem, quantity) values ('ItemTest', 10000, 10);
+insert into item(item_name, price, quantity) values ('ItemTest', 10000, 10);
 -- 조회 쿼리
 select * from item;
 
