@@ -29,12 +29,21 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	// JdbcTemplate
 	//implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+
 	// spring jpa
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
 	// MyBatis
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3'
+
 	// H2 DB
 	runtimeOnly 'com.h2database:h2'
+
+	// Querydsl
+	implementation 'com.querydsl:querydsl-jpa:5.0.0:jakarta'
+	annotationProcessor "com.querydsl:querydsl-apt:${dependencyManagement.importedProperties['querydsl.version']}:jakarta"
+	annotationProcessor "jakarta.annotation:jakarta.annotation-api"
+	annotationProcessor "jakarta.persistence:jakarta.persistence-api"
 
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
@@ -44,4 +53,9 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+// Querydsl -> 자동 생성된 QClass gradle clean 으로 제거
+clean {
+	delete file('src/main/generated')
 }
